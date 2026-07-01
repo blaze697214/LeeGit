@@ -94,6 +94,20 @@ async function waitForEditor(maxRetries = 20) {
     return false;
 }
 
+function getCode() {
+    const editors = document.querySelectorAll(".view-lines");
+
+    for (const editor of editors) {
+        const text = editor.innerText?.trim();
+
+        if (text && text.length > 20) {
+            return text;
+        }
+    }
+
+    return null;
+}
+
 function getLanguage() {
     const languages = [
         "C++",
