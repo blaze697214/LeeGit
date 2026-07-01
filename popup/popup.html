@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LeeGit</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>LeeGit</h1>
+
+    <div class="section">
+      <input id="username" type="text" placeholder="GitHub Username">
+      <input id="repo" type="text" placeholder="Repository Name">
+      <input id="branch" type="text" placeholder="Branch (default: main)">
+      <input id="token" type="password" placeholder="GitHub Token">
+    </div>
+
+    <div class="buttons">
+      <button id="saveBtn">Save Settings</button>
+      <button id="syncBtn">Sync Current Problem</button>
+    </div>
+
+    <p id="status">Ready</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

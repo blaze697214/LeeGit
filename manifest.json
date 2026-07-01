@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "LeeGit",
+  "version": "1.0.0",
+  "description": "Sync accepted LeetCode solutions to GitHub.",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://api.github.com/*"
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+
+  "background": {
+    "service_worker": "background/worker.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/problems/*"
+      ],
+      "js": [
+        "content/leetcode.js"
+      ]
+    }
+  ],
+
+  "icons": {
+    "16": "assets/icon16.png"
+  }
+}
