@@ -90,8 +90,11 @@ async function waitForEditor(maxRetries = 20) {
     return false;
 }
 
-// FIX #5 (language variant of the same problem): scoped to the toolbar area above the
-// editor first, since language-name buttons can also appear elsewhere (e.g. filter menus).
+// Scans the whole page for a language-name button. An earlier attempt scoped this to a
+// guessed container (`[id^='editor']`) that doesn't actually wrap the language picker in
+// LeetCode's current layout, which made this always return "Unknown" and silently made
+// every synced file save as .txt. Reverted to a full-page scan, and now warns loudly if
+// it still can't find a match instead of failing silently.
 function getLanguage() {
     const languages = [
         "C++",
@@ -105,10 +108,7 @@ function getLanguage() {
         "Rust"
     ];
 
-    const scope = document.querySelector("[id^='editor']")?.closest("div")?.parentElement
-        || document.body;
-
-    const buttons = scope.querySelectorAll("button");
+    const buttons = document.querySelectorAll("button");
 
     for (const btn of buttons) {
         const text = btn.innerText?.trim();
@@ -118,6 +118,7 @@ function getLanguage() {
         }
     }
 
+    console.warn("LeeGit: could not detect language, falling back to .txt extension.");
     return "Unknown";
 }
 

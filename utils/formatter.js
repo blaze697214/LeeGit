@@ -10,7 +10,8 @@ const EXTENSIONS = {
     "C": "c",
     "C#": "cs",
     "Go": "go",
-    "Rust": "rs"
+    "Rust": "rs",
+    "SQL": "sql"
 };
 
 export function getFileExtension(language) {
