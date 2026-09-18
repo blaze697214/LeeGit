@@ -105,7 +105,8 @@ function getLanguage() {
         "C",
         "C#",
         "Go",
-        "Rust"
+        "Rust",
+        "MySQL"
     ];
 
     const buttons = document.querySelectorAll("button");
